@@ -1,0 +1,533 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4000 2500" width="4000" height="2500"
+     font-family="Georgia, 'Times New Roman', serif">
+  <style>
+    text { font-family: "Aptos", "Segoe UI", sans-serif !important; }
+  </style>
+  <defs>
+    <!-- ============ GRADIENTS ============ -->
+    <linearGradient id="greenGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#13c987"/>
+      <stop offset="1" stop-color="#056b40"/>
+    </linearGradient>
+
+    <linearGradient id="redMain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff3b40"/>
+      <stop offset="0.45" stop-color="#e3272d"/>
+      <stop offset="1" stop-color="#8f1116"/>
+    </linearGradient>
+
+    <linearGradient id="redHighlight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffb0b3" stop-opacity="0.9"/>
+      <stop offset="0.4" stop-color="#ff6b70" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#ff6b70" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="redText" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff3b40"/>
+      <stop offset="1" stop-color="#c81e24"/>
+    </linearGradient>
+
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c9a85c"/>
+      <stop offset="1" stop-color="#f0daa0"/>
+    </linearGradient>
+
+    <linearGradient id="ribbonGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#056b40"/>
+      <stop offset="0.5" stop-color="#0fa968"/>
+      <stop offset="1" stop-color="#c9a85c"/>
+    </linearGradient>
+
+    <linearGradient id="underlineFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e3272d" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#e3272d" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#c9a85c" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="divGold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c9a85c" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#c9a85c" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#c9a85c" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- ============ RADIAL GLOWS ============ -->
+    <radialGradient id="glowGreen" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#0fa968" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#0fa968" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowGold" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#c9a85c" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#c9a85c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowRed" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#e3272d" stop-opacity="0.07"/>
+      <stop offset="1" stop-color="#e3272d" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- ============ BALLOONS ============ -->
+    <radialGradient id="balloonGreen" cx="0.35" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#5ed99d"/>
+      <stop offset="0.6" stop-color="#0fa968"/>
+      <stop offset="1" stop-color="#056b40"/>
+    </radialGradient>
+    <radialGradient id="balloonRed" cx="0.35" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#ff8b8f"/>
+      <stop offset="0.6" stop-color="#e3272d"/>
+      <stop offset="1" stop-color="#8f1116"/>
+    </radialGradient>
+    <radialGradient id="balloonGold" cx="0.35" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#fce8b6"/>
+      <stop offset="0.6" stop-color="#c9a85c"/>
+      <stop offset="1" stop-color="#8f7331"/>
+    </radialGradient>
+
+    <!-- ============ FILTERS ============ -->
+    <filter id="dropShadowRed" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="18"/>
+      <feOffset dx="0" dy="22" result="offsetblur"/>
+      <feFlood flood-color="#7a0e12" flood-opacity="0.35"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- ============ LEAF ============ -->
+    <g id="leaf">
+      <path d="M0 0 C 30 -40 80 -60 130 -55 C 130 -30 100 20 50 40 C 30 45 10 40 0 30 C -8 20 -10 10 0 0 Z"
+            fill="#0fa968" opacity="0.85"/>
+      <path d="M0 0 C 30 -40 80 -60 130 -55"
+            fill="none" stroke="#056b40" stroke-width="2" opacity="0.6"/>
+      <path d="M30 -15 L70 -35 M45 -5 L90 -25 M20 -22 L55 -45"
+            stroke="#056b40" stroke-width="1.5" opacity="0.4" fill="none"/>
+    </g>
+
+    <!-- ============ BALLOON SYMBOLS ============ -->
+    <!-- Green balloon large -->
+    <g id="balloon-green-lg">
+      <path d="M0 0 C -70 0 -110 60 -110 130 C -110 210 -60 260 0 260
+               C 60 260 110 210 110 130 C 110 60 70 0 0 0 Z"
+            fill="url(#balloonGreen)"/>
+      <ellipse cx="-38" cy="70" rx="22" ry="34" fill="#ffffff" opacity="0.35"/>
+      <path d="M-12 260 L0 285 L12 260 Z" fill="#056b40"/>
+      <path d="M0 285 Q 15 400 -20 520 T 0 700"
+            fill="none" stroke="#5f736b" stroke-width="1.5" opacity="0.55"/>
+    </g>
+
+    <!-- Red balloon medium -->
+    <g id="balloon-red-md">
+      <path d="M0 0 C -60 0 -95 50 -95 110 C -95 180 -50 225 0 225
+               C 50 225 95 180 95 110 C 95 50 60 0 0 0 Z"
+            fill="url(#balloonRed)"/>
+      <ellipse cx="-32" cy="60" rx="18" ry="28" fill="#ffffff" opacity="0.4"/>
+      <path d="M-10 225 L0 248 L10 225 Z" fill="#8f1116"/>
+      <path d="M0 248 Q -20 360 10 480 T -5 640"
+            fill="none" stroke="#5f736b" stroke-width="1.4" opacity="0.5"/>
+    </g>
+
+    <!-- Gold balloon medium -->
+    <g id="balloon-gold-md">
+      <path d="M0 0 C -42 0 -66 36 -66 78 C -66 128 -36 160 0 160
+               C 36 160 66 128 66 78 C 66 36 42 0 0 0 Z"
+            fill="url(#balloonGold)"/>
+      <ellipse cx="-22" cy="44" rx="12" ry="20" fill="#ffffff" opacity="0.45"/>
+      <path d="M-9 160 L0 178 L9 160 Z" fill="#8f7331"/>
+      <path d="M0 178 Q 15 280 -10 400"
+            fill="none" stroke="#5f736b" stroke-width="1.2" opacity="0.5"/>
+    </g>
+
+    <!-- Small balloon -->
+    <g id="balloon-sm">
+      <path d="M0 0 C -32 0 -50 26 -50 58 C -50 94 -26 116 0 116
+               C 26 116 50 94 50 58 C 50 26 32 0 0 0 Z"/>
+      <ellipse cx="-18" cy="32" rx="8" ry="14" fill="#ffffff" opacity="0.45"/>
+      <path d="M-7 116 L0 130 L7 116 Z"/>
+      <path d="M0 130 Q 15 210 -5 300"
+            fill="none" stroke="#5f736b" stroke-width="1" opacity="0.45"/>
+    </g>
+
+    <!-- ============ PRODUCT ICONS ============ -->
+    <g id="icon-erp">
+      <circle cx="0" cy="0" r="24" fill="none" stroke="#078b53" stroke-width="4.5"/>
+      <circle cx="0" cy="0" r="8" fill="#078b53"/>
+      <g stroke="#078b53" stroke-width="6" stroke-linecap="round">
+        <line x1="0" y1="-36" x2="0" y2="-29"/>
+        <line x1="0" y1="29" x2="0" y2="36"/>
+        <line x1="-36" y1="0" x2="-29" y2="0"/>
+        <line x1="29" y1="0" x2="36" y2="0"/>
+        <line x1="-25" y1="-25" x2="-20" y2="-20"/>
+        <line x1="20" y1="20" x2="25" y2="25"/>
+        <line x1="-25" y1="25" x2="-20" y2="20"/>
+        <line x1="20" y1="-20" x2="25" y2="-25"/>
+      </g>
+    </g>
+
+    <g id="icon-smb">
+      <path d="M-34 -10 L-29 -32 L29 -32 L34 -10 Z"
+            fill="none" stroke="#078b53" stroke-width="4.5" stroke-linejoin="round"/>
+      <rect x="-34" y="-10" width="68" height="42" fill="none"
+            stroke="#078b53" stroke-width="4.5" stroke-linejoin="round"/>
+      <path d="M-17 -10 L-17 10 M17 -10 L17 10 M0 -10 L0 10"
+            stroke="#078b53" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="0" cy="-21" r="3.5" fill="#078b53"/>
+    </g>
+
+    <g id="icon-edu">
+      <path d="M-36 -7 L0 -26 L36 -7 L0 12 Z"
+            fill="none" stroke="#078b53" stroke-width="4.5" stroke-linejoin="round"/>
+      <path d="M-22 -1 L-22 17 C -22 24 22 24 22 17 L22 -1"
+            fill="none" stroke="#078b53" stroke-width="4.5" stroke-linejoin="round"/>
+      <line x1="31" y1="-5" x2="31" y2="17" stroke="#078b53" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="31" cy="22" r="3.5" fill="#078b53"/>
+    </g>
+
+    <g id="icon-crm">
+      <path d="M0 24 C -24 7 -36 -7 -36 -19 C -36 -31 -26 -36 -19 -34
+               C -12 -31 -5 -24 0 -17 C 5 -24 12 -31 19 -34
+               C 26 -36 36 -31 36 -19 C 36 -7 24 7 0 24 Z"
+            fill="none" stroke="#078b53" stroke-width="4.5" stroke-linejoin="round"/>
+      <circle cx="0" cy="-11" r="6" fill="#078b53"/>
+    </g>
+
+    <g id="icon-support">
+      <path d="M-28 -10 C -28 -24 -14 -34 0 -34 C 14 -34 28 -24 28 -10"
+            fill="none" stroke="#078b53" stroke-width="4.5" stroke-linecap="round"/>
+      <rect x="-34" y="-10" width="12" height="22" rx="5" fill="#078b53"/>
+      <rect x="22" y="-10" width="12" height="22" rx="5" fill="#078b53"/>
+      <path d="M-34 12 C -34 24 -22 32 -8 32"
+            fill="none" stroke="#078b53" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="6" cy="32" r="4.5" fill="#078b53"/>
+    </g>
+  </defs>
+
+  <!-- ============================================================
+       BACKGROUND
+       ============================================================ -->
+  <rect width="4000" height="2500" fill="#ffffff"/>
+
+  <ellipse cx="2000" cy="400"  rx="1800" ry="900" fill="url(#glowGreen)"/>
+  <ellipse cx="3600" cy="2200" rx="1200" ry="800" fill="url(#glowGold)"/>
+  <ellipse cx="300"  cy="2100" rx="1000" ry="700" fill="url(#glowGreen)"/>
+  <ellipse cx="250" cy="1780" rx="760" ry="760" fill="url(#glowRed)"/>
+  <ellipse cx="3750" cy="700" rx="700" ry="760" fill="url(#glowRed)"/>
+
+  <!-- Subtle edge sparkles -->
+  <g fill="none" stroke-linecap="round" stroke-width="3" opacity="0.42">
+    <path d="M790 1540 V1570 M775 1555 H805" stroke="#c9a85c"/>
+    <path d="M3220 1660 V1692 M3204 1676 H3236" stroke="#0fa968"/>
+    <path d="M920 1840 V1864 M908 1852 H932" stroke="#e3272d"/>
+    <path d="M3080 500 V524 M3068 512 H3092" stroke="#c9a85c"/>
+  </g>
+
+  <!-- Orbits -->
+  <g opacity="0.22" fill="none" stroke="#dcebe0" stroke-width="2">
+    <circle cx="2000" cy="1250" r="880"/>
+    <circle cx="2000" cy="1250" r="1180" stroke-dasharray="4 14"/>
+    <circle cx="2000" cy="1250" r="1500" stroke-dasharray="2 20" opacity="0.5"/>
+  </g>
+
+  <!-- Ribbons -->
+  <g opacity="0.9">
+    <rect x="-400" y="180" width="1250" height="16" fill="url(#ribbonGrad)" transform="rotate(-25 0 180)"/>
+    <rect x="3150" y="2380" width="1250" height="16" fill="url(#ribbonGrad)" transform="rotate(-25 3150 2380)"/>
+  </g>
+
+  <!-- ============================================================
+       LÁ CÂY — đặt ở rìa, không chắn text
+       ============================================================ -->
+  <g opacity="0.9">
+    <g transform="translate(180, 620) rotate(-30)">
+      <use href="#leaf" transform="scale(1)"/>
+    </g>
+    <g transform="translate(260, 760) rotate(-55)">
+      <use href="#leaf" transform="scale(0.85)"/>
+    </g>
+    <g transform="translate(140, 880) rotate(10)">
+      <use href="#leaf" transform="scale(0.9)"/>
+    </g>
+
+    <g transform="translate(3720, 1480) rotate(150)">
+      <use href="#leaf" transform="scale(1)"/>
+    </g>
+    <g transform="translate(3620, 1620) rotate(175)">
+      <use href="#leaf" transform="scale(0.85)"/>
+    </g>
+    <g transform="translate(3800, 1650) rotate(125)">
+      <use href="#leaf" transform="scale(0.9)"/>
+    </g>
+  </g>
+
+  <!-- ============================================================
+       BONG BÓNG — 15 quả, đặt ở vùng an toàn (rìa trái/phải + trên cùng)
+       Không chắn khối text trung tâm
+       ============================================================ -->
+
+  <!-- ===== BÊN TRÁI (7 quả) ===== -->
+  <!-- L1: Xanh lớn góc trái trên -->
+  <g transform="translate(220, 200)">
+    <use href="#balloon-green-lg"/>
+  </g>
+
+  <!-- L2: Đỏ vừa -->
+  <g transform="translate(520, 130)">
+    <use href="#balloon-red-md" transform="scale(0.8)"/>
+  </g>
+
+  <!-- L3: Vàng nhỏ -->
+  <g transform="translate(400, 470)">
+    <use href="#balloon-gold-md" transform="scale(0.7)"/>
+  </g>
+
+  <!-- L4: Xanh nhỏ -->
+  <g transform="translate(140, 720)" fill="url(#balloonGreen)">
+    <use href="#balloon-sm" transform="scale(0.9)"/>
+  </g>
+
+  <!-- L5: Đỏ nhỏ -->
+  <g transform="translate(660, 850)" fill="url(#balloonRed)">
+    <use href="#balloon-sm" transform="scale(0.7)"/>
+  </g>
+
+  <!-- L6: Vàng nhỏ -->
+  <g transform="translate(280, 1080)" fill="url(#balloonGold)">
+    <use href="#balloon-sm" transform="scale(0.75)"/>
+  </g>
+
+  <!-- L7: Xanh nhỏ -->
+  <g transform="translate(560, 1250)" fill="url(#balloonGreen)">
+    <use href="#balloon-sm" transform="scale(0.65)"/>
+  </g>
+
+
+  <!-- ===== BÊN PHẢI (7 quả) ===== -->
+  <!-- R1: Đỏ vừa góc phải trên -->
+  <g transform="translate(3400, 130)">
+    <use href="#balloon-red-md" transform="scale(1.05)"/>
+  </g>
+
+  <!-- R2: Xanh lớn -->
+  <g transform="translate(3740, 260)">
+    <use href="#balloon-green-lg" transform="scale(0.8)"/>
+  </g>
+
+  <!-- R3: Vàng vừa -->
+  <g transform="translate(3600, 530)">
+    <use href="#balloon-gold-md" transform="scale(0.85)"/>
+  </g>
+
+  <!-- R4: Xanh nhỏ -->
+  <g transform="translate(3850, 720)" fill="url(#balloonGreen)">
+    <use href="#balloon-sm" transform="scale(0.85)"/>
+  </g>
+
+  <!-- R5: Đỏ nhỏ -->
+  <g transform="translate(3380, 880)" fill="url(#balloonRed)">
+    <use href="#balloon-sm" transform="scale(0.7)"/>
+  </g>
+
+  <!-- R6: Vàng nhỏ -->
+  <g transform="translate(3700, 1120)" fill="url(#balloonGold)">
+    <use href="#balloon-sm" transform="scale(0.75)"/>
+  </g>
+
+  <!-- R7: Xanh nhỏ -->
+  <g transform="translate(3400, 1330)" fill="url(#balloonGreen)">
+    <use href="#balloon-sm" transform="scale(0.65)"/>
+  </g>
+
+
+  <!-- ===== TRÊN CÙNG (1 quả giữa, cách xa logo) ===== -->
+  <g transform="translate(900, 80)">
+    <use href="#balloon-gold-md" transform="scale(0.65)"/>
+  </g>
+  <g transform="translate(3100, 60)">
+    <use href="#balloon-red-md" transform="scale(0.7)"/>
+  </g>
+
+  <!-- Confetti rải rác (tránh vùng text trung tâm) -->
+  <g opacity="0.85">
+    <circle cx="900" cy="650" r="7" fill="#e3272d"/>
+    <circle cx="3050" cy="700" r="6" fill="#c9a85c"/>
+    <circle cx="1200" cy="950" r="5" fill="#0fa968"/>
+    <circle cx="2850" cy="900" r="6" fill="#c9a85c"/>
+    <circle cx="780" cy="1450" r="6" fill="#e3272d"/>
+    <circle cx="3180" cy="1500" r="5" fill="#0fa968"/>
+    <rect x="1100" y="520" width="12" height="12" rx="2" fill="#e3272d" transform="rotate(30 1106 526)"/>
+    <rect x="2900" y="580" width="10" height="10" rx="2" fill="#c9a85c" transform="rotate(-20 2905 585)"/>
+    <rect x="850" y="1050" width="10" height="10" rx="2" fill="#0fa968" transform="rotate(45 855 1055)"/>
+    <rect x="3100" y="1180" width="11" height="11" rx="2" fill="#e3272d" transform="rotate(15 3105 1185)"/>
+  </g>
+
+  <!-- ============================================================
+       TOP — LOGO + OMEGA.ERP + Badge năm
+       ============================================================ -->
+  <g transform="translate(2000, 0)">
+
+    <!-- Logo -->
+    <g transform="translate(0, 130)">
+      <circle cx="0" cy="100" r="105" fill="url(#greenGrad)"/>
+      <path d="M-64 152 L-14 102 M64 152 L14 102" stroke="white" stroke-width="17"
+            stroke-linecap="round"/>
+      <circle cx="0" cy="85" r="36" fill="#e52b35" stroke="white" stroke-width="13"/>
+    </g>
+
+    <!-- OMEGA.ERP — .ERP màu đỏ -->
+    <text x="0" y="410" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+          font-size="96" font-weight="900" letter-spacing="2" fill="#1a332c">
+      OMEGA<tspan fill="url(#redText)">.ERP</tspan>
+    </text>
+
+    <!-- Years badge -->
+    <g transform="translate(0, 510)">
+      <rect x="-310" y="-42" width="620" height="84" rx="42"
+            fill="none" stroke="#c9a85c" stroke-width="3.5"/>
+      <text x="0" y="16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+            font-size="42" font-weight="800" letter-spacing="12" fill="#8f7331">
+        2009 — 2026
+      </text>
+    </g>
+  </g>
+
+  <!-- ============================================================
+       HAPPY ANNIVERSARY LABEL
+       ============================================================ -->
+    <text x="2000" y="760" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+      font-size="54" font-weight="700" letter-spacing="8" fill="#5f736b">
+    HAPPY ANNIVERSARY
+  </text>
+
+  <!-- ============================================================
+       BIG "17" — NHỎ LẠI (720px thay vì 1080px)
+       ============================================================ -->
+  <g filter="url(#dropShadowRed)">
+    <text x="2000" y="1380" text-anchor="middle"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="720" font-weight="900" letter-spacing="-30"
+          fill="#4a0608" opacity="0.28">
+      17
+    </text>
+    <text x="2000" y="1360" text-anchor="middle"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="720" font-weight="900" letter-spacing="-30"
+          fill="url(#redMain)">
+      17
+    </text>
+    <text x="2000" y="1360" text-anchor="middle"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="720" font-weight="900" letter-spacing="-30"
+          fill="url(#redHighlight)" opacity="0.65">
+      17
+    </text>
+  </g>
+
+  <!-- Underline -->
+  <rect x="1250" y="1410" width="1500" height="8" rx="4" fill="url(#underlineFade)"/>
+
+  <!-- ============================================================
+       "YEARS" — TO HƠN (460px)
+       ============================================================ -->
+  <text x="2000" y="1790" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+      font-size="420" font-weight="800" letter-spacing="10" fill="url(#greenGrad)">
+    YEARS
+  </text>
+
+  <!-- Subline -->
+  <text x="2000" y="1890" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+      font-size="46" font-weight="700" letter-spacing="6" fill="#5f736b">
+    OMEGA ANNIVERSARY
+  </text>
+
+  <!-- ============================================================
+       COMPANY NAME — TO HƠN
+       ============================================================ -->
+  <text x="2000" y="1990" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+      font-size="58" font-weight="600" letter-spacing="1" fill="#1a332c">
+    CÔNG TY TNHH
+  </text>
+  <text x="2000" y="2070" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+      font-size="84" font-weight="800" letter-spacing="1" fill="#078b53">
+    CÔNG NGHỆ &amp; GIẢI PHÁP OMEGA
+  </text>
+
+  <!-- ============================================================
+       DIVIDER + TRI ÂN — TO HƠN
+       ============================================================ -->
+  <rect x="950" y="2130" width="2100" height="2" fill="url(#divGold)"/>
+  <text x="2000" y="2156" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="48" fill="#c9a85c">◆</text>
+
+  <text x="2000" y="2210" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="44" font-weight="700" fill="#1a332c">
+    Tri ân Khách hàng · Cộng sự · Đối tác
+  </text>
+  <text x="2000" y="2270" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="38" font-weight="400" fill="#8f7331">
+    Cam kết phát triển &amp; đồng hành cùng Quý vị
+  </text>
+
+  <!-- ============================================================
+       PRODUCTS — 5 sản phẩm với icon, TO HƠN
+       ============================================================ -->
+  <g transform="translate(2000, 2340)">
+    <!-- <text x="0" y="-24" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+          font-size="20" font-weight="800" letter-spacing="8" fill="#8a9b92">
+      HỆ SINH THÁI GIẢI PHÁP OMEGA
+    </text> -->
+
+    <g transform="translate(0, 0)">
+
+      <g transform="translate(-860, 0)">
+        <use href="#icon-erp" x="0" y="-16"/>
+        <text x="0" y="78" text-anchor="middle"
+              font-family="Arial, Helvetica, sans-serif"
+            font-size="46" font-weight="700" fill="#1a332c">Omega ERP</text>
+        <text x="0" y="112" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+            font-size="26" font-weight="500" fill="#829189">Quản trị toàn diện</text>
+      </g>
+
+      <g transform="translate(-430, 0)">
+        <use href="#icon-smb" x="0" y="-16"/>
+        <text x="0" y="78" text-anchor="middle"
+              font-family="Arial, Helvetica, sans-serif"
+            font-size="46" font-weight="700" fill="#1a332c">Gama SMB</text>
+        <text x="0" y="112" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+            font-size="26" font-weight="500" fill="#829189">Giải pháp doanh nghiệp</text>
+      </g>
+
+      <g transform="translate(0, 0)">
+        <use href="#icon-edu" x="0" y="-16"/>
+        <text x="0" y="78" text-anchor="middle"
+              font-family="Arial, Helvetica, sans-serif"
+            font-size="46" font-weight="700" fill="#1a332c">Omega EDU</text>
+        <text x="0" y="112" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+            font-size="26" font-weight="500" fill="#829189">Kiến tạo tương lai số</text>
+      </g>
+
+      <g transform="translate(430, 0)">
+        <use href="#icon-crm" x="0" y="-16"/>
+        <text x="0" y="78" text-anchor="middle"
+              font-family="Arial, Helvetica, sans-serif"
+            font-size="46" font-weight="700" fill="#1a332c">Omega CRM</text>
+        <text x="0" y="112" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+            font-size="26" font-weight="500" fill="#829189">Kết nối khách hàng</text>
+      </g>
+
+      <g transform="translate(860, 0)">
+        <use href="#icon-support" x="0" y="-16"/>
+        <text x="0" y="78" text-anchor="middle"
+              font-family="Arial, Helvetica, sans-serif"
+            font-size="46" font-weight="700" fill="#1a332c">Hỗ trợ 24/7</text>
+        <text x="0" y="112" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+            font-size="26" font-weight="500" fill="#829189">Luôn bên bạn</text>
+      </g>
+
+    </g>
+  </g>
+</svg>

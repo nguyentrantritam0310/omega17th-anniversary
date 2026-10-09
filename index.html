@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#078b53">
+<title>OMEGA — 17 Years Anniversary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+/* ================= DESIGN TOKENS ================= */
+:root{
+  --green-50:#eafff4;
+  --green-300:#5ed99d;
+  --green-500:#0fa968;
+  --green-600:#078b53;
+  --green-700:#056b40;
+  --red-500:#e3272d;
+  --red-600:#c81e24;
+  --red-300:#ff6b70;
+  --gold-300:#f0daa0;
+  --gold-500:#c9a85c;
+  --gold-700:#8f7331;
+  --paper:#ffffff;
+  --bg:#ffffff;
+  --bg-soft:#f4faf6;
+  --line:#e1ece5;
+  --text:#1a332c;
+  --text-muted:#5f736b;
+
+  --radius-lg:24px;
+  --radius-xl:32px;
+  --radius-full:999px;
+
+  --shadow-sm:0 2px 8px rgba(13,33,27,.06),0 1px 2px rgba(13,33,27,.04);
+  --shadow-md:0 12px 30px -10px rgba(13,33,27,.12),0 4px 12px rgba(13,33,27,.05);
+  --shadow-lg:0 24px 60px -20px rgba(13,33,27,.16),0 8px 24px rgba(13,33,27,.06);
+  --shadow-xl:0 40px 100px -30px rgba(13,33,27,.22),0 16px 40px rgba(13,33,27,.08);
+
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
+}
+
+/* ================= RESET ================= */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'Inter',-apple-system,'Segoe UI',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+  line-height:1.6;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+
+.wrap{width:min(1200px,calc(100% - 48px));margin-inline:auto}
+
+/* ================= BACKGROUND ================= */
+.bg-aura{
+  position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%,rgba(15,169,104,.06),transparent 60%),
+    radial-gradient(ellipse 50% 40% at 100% 100%,rgba(201,168,92,.05),transparent 60%);
+}
+.bg-aura::before{
+  content:"";position:absolute;
+  width:520px;height:520px;top:-15%;left:-8%;
+  border-radius:50%;filter:blur(100px);
+  background:radial-gradient(circle,rgba(15,169,104,.18),transparent 70%);
+}
+.noise{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.02;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ================= TOPBAR ================= */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 0;
+  transition:padding .4s var(--ease-out),background .4s var(--ease-out),backdrop-filter .4s,box-shadow .4s;
+}
+.topbar.scrolled{
+  padding:12px 0;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(16px) saturate(1.3);
+  -webkit-backdrop-filter:blur(16px) saturate(1.3);
+  box-shadow:0 1px 0 var(--line),0 6px 24px -8px rgba(13,33,27,.06);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{
+  display:flex;align-items:center;gap:12px;
+  font-weight:900;font-size:23px;letter-spacing:-.5px;color:#e3272d;
+}
+.logo-mark{
+  width:42px;height:42px;flex:none;
+  transition:transform .6s var(--ease-spring);
+}
+.brand:hover .logo-mark{transform:rotate(-8deg)}
+.brand-text{display:flex;align-items:baseline;gap:2px}
+.brand-text em{font-style:normal;color:var(--green-600);font-weight:900}
+
+.nav-links{
+  display:flex;gap:6px;align-items:center;
+  padding:6px;border-radius:var(--radius-full);
+  background:rgba(255,255,255,.6);
+  border:1px solid var(--line);
+  backdrop-filter:blur(12px);
+}
+.nav-links a{
+  padding:8px 16px;border-radius:var(--radius-full);
+  font-size:13px;font-weight:600;color:var(--text-muted);
+  transition:color .3s var(--ease-out),background .3s var(--ease-out);
+}
+.nav-links a:hover,.nav-links a.active{
+  color:var(--green-700);background:var(--green-50);
+}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100svh;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  padding:140px 0 80px;overflow:hidden;
+}
+.hero-orbits{position:absolute;inset:0;pointer-events:none}
+.orbit{
+  position:absolute;left:50%;top:50%;
+  border:1px solid rgba(15,169,104,.10);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  animation:orbitSpin linear infinite;
+}
+.orbit-1{width:560px;height:560px;animation-duration:60s}
+.orbit-2{width:860px;height:860px;animation-duration:90s;animation-direction:reverse}
+@keyframes orbitSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+.hero-inner{position:relative;z-index:2;text-align:center;max-width:1000px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:9px 18px 9px 14px;border-radius:var(--radius-full);
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(14px) saturate(1.3);
+  color:var(--green-700);
+  font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+  box-shadow:var(--shadow-sm);
+  animation:riseIn .9s var(--ease-out) both;
+}
+.eyebrow .dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--green-500);
+  box-shadow:0 0 0 4px rgba(15,169,104,.22);
+}
+
+.hero h1{
+  margin:28px 0 8px;
+  font-family:'Fraunces',Georgia,serif;
+  font-weight:900;font-size:clamp(64px,11vw,152px);
+  line-height:.92;letter-spacing:-.04em;
+  font-variation-settings:"opsz" 144;
+  animation:riseIn 1s .15s var(--ease-out) both;
+}
+
+/* Số 17 màu đỏ */
+.hero h1 .num-17{
+  display:inline-block;
+  background:linear-gradient(100deg,#c81e24 0%,#e3272d 35%,#ff6b70 55%,#e3272d 70%,#c81e24 100%);
+  background-size:220% auto;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:shimmerRed 6s linear infinite;
+  filter:drop-shadow(0 8px 30px rgba(227,39,45,.25));
+}
+@keyframes shimmerRed{to{background-position:220% center}}
+
+/* "YEARS" xanh */
+.hero h1 .word-years{
+  display:inline-block;
+  background:linear-gradient(100deg,#056b40 0%,#0fa968 40%,#5ed99d 55%,#0fa968 70%,#056b40 100%);
+  background-size:220% auto;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:shimmerText 8s linear infinite;
+}
+@keyframes shimmerText{to{background-position:220% center}}
+
+.hero h1 .sub{
+  display:block;font-family:'Inter',sans-serif;
+  font-size:clamp(11px,1.4vw,15px);
+  letter-spacing:.55em;font-weight:800;
+  color:var(--text-muted);
+  margin-top:18px;
+  padding-left:.55em;
+}
+
+/* Tên công ty TO */
+.company{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:clamp(18px,2.6vw,28px);
+  font-weight:700;letter-spacing:.12em;
+  color:var(--text);text-transform:uppercase;
+  margin:34px 0 22px;
+  line-height:1.3;
+  animation:riseIn 1s .35s var(--ease-out) both;
+}
+.company strong{
+  color:var(--green-600);
+  font-weight:900;
+}
+.slogan{
+  font-family:'Fraunces',Georgia,serif;
+  font-style:italic;font-weight:400;
+  font-size:clamp(20px,2.6vw,30px);
+  color:var(--gold-700);
+  margin:14px 0 26px;
+  animation:riseIn 1s .45s var(--ease-out) both;
+}
+
+.hero-rule{
+  width:140px;height:1px;margin:0 auto 30px;
+  background:linear-gradient(90deg,transparent,var(--gold-500),transparent);
+  position:relative;
+  animation:riseIn 1s .55s var(--ease-out) both;
+}
+
+.hero-desc{
+  max-width:620px;margin:0 auto 36px;
+  font-size:15.5px;line-height:1.85;color:var(--text-muted);
+  animation:riseIn 1s .65s var(--ease-out) both;
+}
+
+.hero-cta{
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+  animation:riseIn 1s .75s var(--ease-out) both;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 26px;border-radius:var(--radius-full);
+  font-size:14px;font-weight:700;
+  transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out),background .3s;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--green-500),var(--green-700));
+  color:#fff;
+  box-shadow:0 12px 30px -10px rgba(15,169,104,.5),inset 0 1px 0 rgba(255,255,255,.18);
+}
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 40px -12px rgba(15,169,104,.6);
+}
+.btn-primary svg{transition:transform .35s var(--ease-out)}
+.btn-primary:hover svg{transform:translateY(2px)}
+
+.btn-ghost{
+  background:rgba(255,255,255,.7);
+  color:var(--text);
+  border:1px solid var(--line);
+  backdrop-filter:blur(12px);
+}
+.btn-ghost:hover{border-color:var(--green-300);color:var(--green-700)}
+
+.scroll-hint{
+  margin-top:44px;
+  display:inline-flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--text-muted);font-size:10px;
+  letter-spacing:3px;text-transform:uppercase;font-weight:700;
+  animation:riseIn 1s .9s var(--ease-out) both;
+}
+.scroll-hint .track{
+  width:1px;height:40px;background:var(--line);position:relative;overflow:hidden;
+}
+.scroll-hint .track::after{
+  content:"";position:absolute;left:0;top:-100%;width:100%;height:100%;
+  background:linear-gradient(180deg,transparent,var(--green-500),transparent);
+  animation:trackSlide 3.2s ease-in-out infinite;
+}
+@keyframes trackSlide{0%{top:-100%}100%{top:100%}}
+@keyframes riseIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ================= COUNTDOWN ================= */
+.countdown-section{
+  position:relative;padding:0 0 60px;margin-top:-40px;z-index:5;
+}
+.countdown-shell{
+  max-width:960px;margin:auto;
+  padding:14px;border-radius:var(--radius-xl);
+  background:linear-gradient(135deg,rgba(15,169,104,.12),rgba(201,168,92,.10));
+  box-shadow:var(--shadow-xl);
+  position:relative;
+}
+.countdown-shell::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+  background:linear-gradient(135deg,rgba(15,169,104,.4),rgba(201,168,92,.3),rgba(15,169,104,.25));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;
+}
+.countdown{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-radius:calc(var(--radius-xl) - 10px);
+  background:var(--paper);
+  overflow:hidden;
+}
+.cd-item{padding:30px 18px;text-align:center;position:relative}
+.cd-item:not(:last-child)::after{
+  content:"";position:absolute;right:0;top:22%;height:56%;width:1px;
+  background:linear-gradient(180deg,transparent,var(--line),transparent);
+}
+.cd-num{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:clamp(38px,5.5vw,64px);
+  font-weight:900;line-height:1;letter-spacing:-.03em;
+  background:linear-gradient(180deg,var(--green-600),var(--green-700));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  font-variant-numeric:tabular-nums;
+}
+.cd-label{
+  font-size:10.5px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--text-muted);font-weight:800;margin-top:12px;
+}
+
+/* ================= SECTIONS ================= */
+.section{padding:110px 0;position:relative}
+.section-head{text-align:center;max-width:740px;margin:0 auto 60px}
+.kicker{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:11px;letter-spacing:3.5px;color:var(--green-600);
+  font-weight:900;text-transform:uppercase;
+}
+.kicker::before,.kicker::after{
+  content:"";width:32px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-500));
+}
+.kicker::after{background:linear-gradient(90deg,var(--gold-500),transparent)}
+.section h2{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:clamp(34px,4.6vw,56px);
+  line-height:1.05;margin:18px 0 0;
+  color:var(--text);font-weight:700;letter-spacing:-.025em;
+  font-variation-settings:"opsz" 144;
+}
+.section-head p{color:var(--text-muted);line-height:1.85;margin:18px 0 0;font-size:15.5px}
+
+/* ================= INVITE CARD ================= */
+.invite-card{
+  max-width:920px;margin:auto;position:relative;
+  padding:clamp(36px,5.5vw,72px);
+  border-radius:var(--radius-xl);
+  background:linear-gradient(180deg,var(--paper),var(--bg-soft));
+  box-shadow:var(--shadow-lg);
+  border:1px solid var(--line);
+  overflow:hidden;
+}
+.invite-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--green-600),var(--green-300),var(--gold-500),var(--green-300),var(--green-600));
+  background-size:220% 100%;
+  animation:shimmerText 9s linear infinite;
+}
+.invite-card::after{
+  content:"“";position:absolute;right:30px;top:-60px;
+  font-family:'Fraunces',Georgia,serif;font-size:260px;line-height:1;
+  color:rgba(15,169,104,.06);
+  pointer-events:none;user-select:none;
+}
+.invite-title{
+  text-align:center;
+  font-family:'Fraunces',Georgia,serif;
+  font-size:15px;font-weight:700;
+  letter-spacing:.4em;text-transform:uppercase;
+  color:var(--gold-700);margin-bottom:36px;
+  position:relative;
+}
+.invite-title::before,.invite-title::after{
+  content:"";display:inline-block;vertical-align:middle;
+  width:52px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-500));
+  margin:0 14px;
+}
+.invite-title::after{background:linear-gradient(90deg,var(--gold-500),transparent)}
+.invite-card p{
+  position:relative;font-size:16px;line-height:2;
+  color:var(--text-muted);margin-bottom:20px;text-align:justify;
+}
+.invite-card p strong{color:var(--text);font-weight:700}
+.invite-card p:first-of-type strong{color:var(--green-700)}
+
+/* Chữ ký */
+.signature{
+  margin-top:38px;text-align:right;
+  font-family:'Fraunces',Georgia,serif;
+  font-style:italic;font-size:26px;
+  color:var(--green-600);line-height:1.3;
+}
+.signature span{
+  display:block;font-size:12px;font-style:normal;
+  font-family:'Inter',sans-serif;
+  color:var(--text-muted);
+  margin-top:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;
+}
+
+/* ================= STATS (có dấu +) ================= */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:22px;max-width:1000px;margin:auto;
+}
+.stat{
+  padding:32px 22px;text-align:center;
+  border-radius:var(--radius-lg);
+  background:rgba(255,255,255,.9);
+  border:1px solid var(--line);
+  transition:transform .4s var(--ease-out),box-shadow .4s var(--ease-out),border-color .4s;
+  backdrop-filter:blur(12px);
+}
+.stat:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-md);
+  border-color:rgba(15,169,104,.25);
+}
+.stat .num{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:clamp(36px,4.6vw,52px);
+  font-weight:900;line-height:1;letter-spacing:-.03em;
+  background:linear-gradient(135deg,var(--green-600),var(--green-300));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  font-variant-numeric:tabular-nums;
+  display:inline-flex;
+  align-items:flex-start;
+  gap:2px;
+}
+.stat .num sup{
+  font-size:.45em;
+  line-height:1;
+  margin-top:.35em;
+  font-weight:900;
+  color:var(--gold-500);
+  -webkit-text-fill-color:var(--gold-500);
+  background:none;
+  transform:translateY(-.1em);
+}
+.stat .lbl{
+  font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--text-muted);font-weight:800;margin-top:14px;
+}
+
+/* ================= TIMELINE (đã fix lệch dot) ================= */
+.timeline{
+  position:relative;
+  max-width:920px;
+  margin:auto;
+  padding:20px 0;
+}
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:linear-gradient(180deg,transparent,var(--green-300) 8%,var(--green-300) 92%,transparent);
+  transform:translateX(-50%);
+  z-index:0;
+}
+.tl-item{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:0;
+  margin-bottom:52px;
+  min-height:120px;
+}
+.tl-item:last-child{margin-bottom:0}
+
+.tl-dot{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  z-index:2;
+  display:grid;
+  place-items:center;
+}
+.tl-dot i{
+  display:block;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--green-500),var(--green-700));
+  border:3px solid var(--paper);
+  box-shadow:0 0 0 2px var(--green-300),0 6px 16px -4px rgba(15,169,104,.4);
+}
+
+.tl-item.left .tl-card{
+  grid-column:1;
+  text-align:right;
+  margin-right:44px;
+}
+.tl-item.right .tl-card{
+  grid-column:2;
+  text-align:left;
+  margin-left:44px;
+}
+
+.tl-year-inline{
+  display:inline-block;
+  font-family:'Fraunces',Georgia,serif;
+  font-weight:900;
+  font-size:13px;
+  letter-spacing:2px;
+  color:var(--gold-500);
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+
+.tl-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:24px 26px;
+  box-shadow:var(--shadow-lg);
+  transition:transform .4s var(--ease-out),box-shadow .4s var(--ease-out),border-color .4s;
+}
+.tl-card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-xl);
+  border-color:rgba(15,169,104,.3);
+}
+.tl-card h4{
+  font-family:'Fraunces',Georgia,serif;
+  color:var(--text);
+  font-size:19px;
+  font-weight:700;
+  margin-bottom:8px;
+}
+.tl-card p{
+  font-size:14px;
+  color:var(--text-muted);
+  line-height:1.7;
+}
+
+/* ================= DETAIL CARDS ================= */
+.details-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.detail-card{
+  position:relative;
+  padding:38px;border-radius:var(--radius-xl);
+  background:rgba(255,255,255,.95);
+  border:1px solid var(--line);
+  display:flex;gap:24px;align-items:flex-start;
+  transition:transform .4s var(--ease-out),box-shadow .4s var(--ease-out),border-color .4s;
+  overflow:hidden;
+  backdrop-filter:blur(12px);
+}
+.detail-card::before{
+  content:"";position:absolute;top:0;left:0;width:0;height:3px;
+  background:linear-gradient(90deg,var(--green-500),var(--gold-500));
+  transition:width .5s var(--ease-out);
+}
+.detail-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
+  border-color:rgba(15,169,104,.25);
+}
+.detail-card:hover::before{width:100%}
+.detail-icon{
+  width:60px;height:60px;flex:none;
+  border-radius:18px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(15,169,104,.12),rgba(15,169,104,.06));
+  color:var(--green-600);
+  border:1px solid rgba(15,169,104,.18);
+}
+.detail-icon svg{width:28px;height:28px}
+.detail-label{
+  font-size:10.5px;letter-spacing:3px;font-weight:900;
+  color:var(--green-600);text-transform:uppercase;
+}
+.detail-card h3{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:26px;color:var(--text);font-weight:700;
+  margin:12px 0 10px;letter-spacing:-.02em;
+}
+.detail-card p{margin:0;color:var(--text-muted);line-height:1.75;font-size:14.5px}
+.detail-card .sub{font-size:13.5px;margin-top:12px;color:var(--text-muted);opacity:.75}
+.map-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:22px;padding:12px 20px;
+  border-radius:var(--radius-full);
+  background:rgba(15,169,104,.08);
+  color:var(--green-700);
+  font-size:13px;font-weight:700;
+  transition:background .3s var(--ease-out),color .3s,border-color .3s;
+  border:1px solid rgba(15,169,104,.22);
+}
+.map-btn:hover{
+  background:var(--green-600);color:#fff;
+  border-color:var(--green-600);
+}
+.map-btn svg{width:14px;height:14px}
+
+/* ================= THANKS ================= */
+.thanks{
+  position:relative;
+  padding:120px 0;text-align:center;color:#fff;
+  overflow:hidden;isolation:isolate;
+  background:
+    radial-gradient(ellipse 70% 90% at 20% 30%,rgba(255,255,255,.10),transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 70%,rgba(201,168,92,.14),transparent 60%),
+    linear-gradient(120deg,#056b40,#0fa968 50%,#056b40);
+}
+.thanks .wrap{position:relative;z-index:2}
+.thanks h2{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:clamp(34px,4.8vw,54px);
+  font-weight:700;margin:0 0 22px;color:#fff;
+  letter-spacing:-.02em;line-height:1.1;
+}
+.thanks p{
+  max-width:780px;margin:auto;
+  line-height:1.95;color:rgba(255,255,255,.92);
+  font-size:16px;
+}
+
+/* ================= MARQUEE ================= */
+.marquee{
+  padding:44px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:var(--bg-soft);
+  overflow:hidden;position:relative;
+}
+.marquee::before,.marquee::after{
+  content:"";position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none;
+}
+.marquee::before{left:0;background:linear-gradient(90deg,var(--bg-soft),transparent)}
+.marquee::after{right:0;background:linear-gradient(270deg,var(--bg-soft),transparent)}
+.marquee-track{
+  display:flex;gap:60px;width:max-content;
+  animation:scrollX 50s linear infinite;
+}
+@keyframes scrollX{to{transform:translateX(-50%)}}
+.mq-item{
+  display:flex;align-items:center;gap:14px;
+  flex:none;
+  font-family:'Fraunces',Georgia,serif;
+  font-size:17px;font-weight:700;color:var(--text);
+}
+.mq-symbol{
+  width:48px;height:48px;border-radius:15px;
+  background:linear-gradient(135deg,rgba(15,169,104,.16),rgba(15,169,104,.06));
+  color:var(--green-600);
+  display:grid;place-items:center;
+  border:1px solid rgba(15,169,104,.18);
+  box-shadow:0 6px 16px -8px rgba(7,139,83,.42);
+}
+.mq-symbol svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mq-item small{display:block;font-family:'Inter',sans-serif;font-size:10.5px;color:var(--text-muted);font-weight:500;margin-top:3px}
+
+/* ================= FOOTER ================= */
+footer{
+  padding:38px 0;text-align:center;
+  color:var(--text-muted);font-size:12.5px;
+  background:var(--bg);
+}
+footer strong{color:var(--green-600);font-weight:900}
+
+/* ================= REVEAL ================= */
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .9s var(--ease-out),transform .9s var(--ease-out);
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:.08s}
+.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:960px){
+  .nav-links{display:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  .wrap{width:calc(100% - 32px)}
+  .topbar{padding:12px 0}
+  .brand{font-size:19px}
+  .brand .logo-mark{width:36px;height:36px}
+  .hero{padding:120px 0 60px;min-height:auto}
+  .hero h1{font-size:clamp(56px,17vw,96px)}
+  .hero h1 .sub{letter-spacing:.35em;font-size:11px;margin-top:14px}
+  .company{font-size:clamp(15px,4vw,20px);letter-spacing:.06em}
+  .orbit-1{width:340px;height:340px}
+  .orbit-2{width:520px;height:520px}
+  .countdown{grid-template-columns:repeat(2,1fr)}
+  .cd-item:nth-child(2)::after{display:none}
+  .cd-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .section{padding:80px 0}
+  .details-grid{grid-template-columns:1fr}
+  .detail-card{padding:28px;gap:18px}
+
+  /* Timeline mobile */
+  .timeline::before{left:16px}
+  .tl-item{
+    grid-template-columns:1fr;
+    margin-bottom:28px;
+    min-height:0;
+  }
+  .tl-dot{
+    left:16px;
+    top:26px;
+    transform:translate(-50%,0);
+  }
+  .tl-item.left .tl-card,
+  .tl-item.right .tl-card{
+    grid-column:1;
+    margin-left:42px;
+    margin-right:0;
+    text-align:left!important;
+    padding:20px 22px;
+  }
+
+  .invite-card::after{font-size:160px;right:10px;top:-30px}
+  .invite-title::before,.invite-title::after{width:24px;margin:0 8px}
+  .signature{font-size:22px}
+  .stats{grid-template-columns:repeat(2,1fr);gap:14px}
+  .stat{padding:24px 14px}
+  .marquee::before,.marquee::after{width:40px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-aura" aria-hidden="true"></div>
+<div class="noise" aria-hidden="true"></div>
+
+<!-- TOPBAR -->
+<header class="topbar" id="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="OMEGA">
+      <svg class="logo-mark" viewBox="0 0 100 100" role="img" aria-label="Logo OMEGA">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#13c987"/>
+            <stop offset="1" stop-color="#056b40"/>
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="46" fill="url(#lg)"/>
+        <path d="M18 76 L43 51 M82 76 L57 51" stroke="white" stroke-width="8" stroke-linecap="round"/>
+        <circle cx="50" cy="43" r="17" fill="#e52b35" stroke="white" stroke-width="6"/>
+      </svg>
+      <span class="brand-text">OMEGA<em>.ERP</em></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#invitation">Thư mời</a>
+      <a href="#journey">Hành trình</a>
+      <a href="#event">Sự kiện</a>
+      <a href="#ecosystem">Hệ sinh thái</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-orbits" aria-hidden="true">
+    <div class="orbit orbit-1"></div>
+    <div class="orbit orbit-2"></div>
+  </div>
+
+  <div class="hero-inner wrap">
+    <div class="eyebrow"><span class="dot"></span>Cột mốc đáng tự hào · 2009 — 2026</div>
+
+    <h1>
+      <span><span class="num-17">17</span> <span class="word-years">YEARS</span></span>
+      <span class="sub">OMEGA ANNIVERSARY</span>
+    </h1>
+
+    <div class="company">Công ty TNHH <strong>Công nghệ &amp; Giải pháp OMEGA</strong></div>
+    <div class="slogan">“17 Năm Hành Trình Số — Đồng Hành &amp; Bứt Phá”</div>
+    <div class="hero-rule" aria-hidden="true"></div>
+
+    <p class="hero-desc">
+      Tri ân những niềm tin đã trao gửi, trân trọng những hành trình đã cùng nhau đi qua và sẵn sàng kiến tạo những giá trị bền vững cho tương lai.
+    </p>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#invitation">
+        Khám phá thư mời
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#event">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        Xem lịch
+      </a>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Cuộn xuống</span>
+      <span class="track"></span>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown-section">
+  <div class="wrap">
+    <div class="countdown-shell reveal">
+      <div class="countdown" id="countdown">
+        <div class="cd-item"><div class="cd-num" id="cd-d">00</div><div class="cd-label">Ngày</div></div>
+        <div class="cd-item"><div class="cd-num" id="cd-h">00</div><div class="cd-label">Giờ</div></div>
+        <div class="cd-item"><div class="cd-num" id="cd-m">00</div><div class="cd-label">Phút</div></div>
+        <div class="cd-item"><div class="cd-num" id="cd-s">00</div><div class="cd-label">Giây</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVITATION -->
+<section class="section" id="invitation">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Lời tri ân</div>
+      <h2>Thư mời từ Ban Giám đốc</h2>
+      <p>17 năm là hành trình được tạo nên từ sự tin tưởng, đồng hành và nỗ lực của tất cả chúng ta.</p>
+    </div>
+
+    <article class="invite-card reveal">
+      <div class="invite-title">Trân trọng kính mời</div>
+      <p><strong>Kính gửi:</strong> Toàn thể Quý Anh/Chị Cán bộ Nhân viên, Quý Đối tác và Quý Khách hàng thân thiết,</p>
+      <p>Chặng đường 17 năm qua của OMEGA không thể vẹn tròn nếu thiếu đi sự cống hiến, tin tưởng và đồng hành của Quý vị. Nhân cột mốc ý nghĩa này, Ban Giám đốc trân trọng kính mời Quý vị đến tham dự đêm tiệc chúc mừng sinh nhật Công ty, cùng nhau nhìn lại hành trình đã qua và mở ra những chương mới rực rỡ hơn.</p>
+      <p>OMEGA trân trọng cảm ơn Quý Khách hàng, Quý Đối tác và toàn thể Cộng sự đã luôn tin tưởng, sát cánh cùng chúng tôi kiến tạo những giá trị thiết thực và bền vững.</p>
+      <p><strong>Sự hiện diện của Quý vị là niềm vinh hạnh lớn đối với chúng tôi.</strong></p>
+      <div class="signature">Ban Giám đốc OMEGA<span>Trân trọng</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section" id="stats" style="padding-top:0">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><div class="num" data-count="17">0<sup>+</sup></div><div class="lbl">Năm kinh nghiệm</div></div>
+      <div class="stat"><div class="num" data-count="1000">0<sup>+</sup></div><div class="lbl">Khách hàng doanh nghiệp</div></div>
+      <div class="stat"><div class="num" data-count="20">0<sup>+</sup></div><div class="lbl">Ngành nghề phục vụ</div></div>
+      <div class="stat"><div class="num" data-count="25">0<sup>+</sup></div><div class="lbl">Giải pháp công nghệ</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="section" id="journey" style="padding-top:40px">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Hành trình 17 năm</div>
+      <h2>Những cột mốc đáng nhớ</h2>
+      <p>Từ những ngày đầu thành lập đến vị thế của một trong những đơn vị tiên phong về giải pháp số.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item left reveal">
+        <div class="tl-dot"><i></i></div>
+        <div class="tl-card">
+          <span class="tl-year-inline">2009</span>
+          <h4>Khởi nguồn</h4>
+          <p>OMEGA chính thức được thành lập, đặt nền móng cho hành trình chuyển đổi số tại Việt Nam.</p>
+        </div>
+      </div>
+
+      <div class="tl-item right reveal">
+        <div class="tl-dot"><i></i></div>
+        <div class="tl-card">
+          <span class="tl-year-inline">2014</span>
+          <h4>Bứt phá</h4>
+          <p>Ra mắt giải pháp Omega ERP — khẳng định vị thế trong lĩnh vực quản trị doanh nghiệp.</p>
+        </div>
+      </div>
+
+      <div class="tl-item left reveal">
+        <div class="tl-dot"><i></i></div>
+        <div class="tl-card">
+          <span class="tl-year-inline">2019</span>
+          <h4>Mở rộng hệ sinh thái</h4>
+          <p>Phát triển Omega EDU, CRM và Gama SMB, phục vụ đa dạng mô hình doanh nghiệp.</p>
+        </div>
+      </div>
+
+      <div class="tl-item right reveal">
+        <div class="tl-dot"><i></i></div>
+        <div class="tl-card">
+          <span class="tl-year-inline">2026</span>
+          <h4>17 năm — Vươn tầm</h4>
+          <p>Tiếp tục đổi mới, đồng hành cùng hàng nghìn khách hàng và đối tác trên khắp cả nước.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENT -->
+<section class="section" id="event" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Hẹn gặp tại đêm tiệc</div>
+      <h2>Thời gian &amp; Địa điểm</h2>
+      <p>Rất mong được đón tiếp Quý vị trong khoảnh khắc đặc biệt này.</p>
+    </div>
+
+    <div class="details-grid">
+      <article class="detail-card reveal">
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        </div>
+        <div>
+          <div class="detail-label">Thời gian</div>
+          <h3>17:00 · Thứ Bảy</h3>
+          <p>Ngày 17 tháng 10 năm 2026</p>
+          <p class="sub">Đêm tiệc kỷ niệm 17 năm thành lập OMEGA</p>
+        </div>
+      </article>
+
+      <article class="detail-card reveal d1">
+        <div class="detail-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        </div>
+        <div>
+          <div class="detail-label">Địa điểm</div>
+          <h3>Nhà hàng Jolie</h3>
+          <p>Lầu 1, 177 Phan Chu Trinh, P.13, Q. Bình Thạnh, TP.HCM</p>
+          <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Nh%C3%A0+h%C3%A0ng+ti%E1%BB%87c+c%C6%B0%E1%BB%9Bi+Jolie%2C+177+Phan+Chu+Trinh%2C+B%C3%ACnh+Th%E1%BA%A1nh%2C+TP.HCM" target="_blank" rel="noopener noreferrer">
+            Mở Google Maps
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- THANKS -->
+<section class="thanks">
+  <div class="wrap reveal">
+    <h2>17 năm — Một hành trình gắn kết</h2>
+    <p>Tri ân khách hàng, cộng sự và đối tác. OMEGA cam kết không ngừng phát triển, đổi mới và đồng hành cùng Quý vị trên chặng đường phía trước.</p>
+  </div>
+</section>
+
+<!-- ECOSYSTEM MARQUEE -->
+<svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="product-erp" viewBox="0 0 24 24">
+    <path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/>
+  </symbol>
+  <symbol id="product-smb" viewBox="0 0 24 24">
+    <rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2"/>
+  </symbol>
+  <symbol id="product-edu" viewBox="0 0 24 24">
+    <path d="m2 9 10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c3.5 3 8.5 3 12 0v-5M22 9v6"/>
+  </symbol>
+  <symbol id="product-crm" viewBox="0 0 24 24">
+    <path d="M20.8 8.6c0 5.1-8.8 10.4-8.8 10.4S3.2 13.7 3.2 8.6A4.6 4.6 0 0 1 12 6.4a4.6 4.6 0 0 1 8.8 2.2Z"/>
+  </symbol>
+  <symbol id="product-support" viewBox="0 0 24 24">
+    <path d="M3 13v-2a9 9 0 0 1 18 0v2M3 13h3v6H5a2 2 0 0 1-2-2v-4ZM21 13h-3v6h1a2 2 0 0 0 2-2v-4ZM18 19a6 6 0 0 1-6 3h-2"/>
+  </symbol>
+</svg>
+<section class="marquee" id="ecosystem" aria-label="Hệ sinh thái giải pháp OMEGA">
+  <div class="marquee-track">
+    <div class="mq-item"><div class="mq-symbol"><svg aria-hidden="true"><use href="#product-erp"/></svg></div><div>Omega ERP<small>Quản trị toàn diện</small></div></div>
+    <div class="mq-item"><div class="mq-symbol"><svg aria-hidden="true"><use href="#product-smb"/></svg></div><div>Gama SMB<small>Giải pháp doanh nghiệp</small></div></div>
+    <div class="mq-item"><div class="mq-symbol"><svg aria-hidden="true"><use href="#product-edu"/></svg></div><div>Omega EDU<small>Kiến tạo tương lai số</small></div></div>
+    <div class="mq-item"><div class="mq-symbol"><svg aria-hidden="true"><use href="#product-crm"/></svg></div><div>Omega CRM<small>Kết nối khách hàng</small></div></div>
+    <div class="mq-item"><div class="mq-symbol"><svg aria-hidden="true"><use href="#product-support"/></svg></div><div>Dịch vụ hỗ trợ<small>Luôn bên bạn</small></div></div>
+    <div class="mq-item"><div class="mq-symbol"><svg aria-hidden="true"><use href="#product-erp"/></svg></div><div>Omega ERP<small>Quản trị toàn diện</small></div></div>
+    <div class="mq-item"><div class="mq-symbol"><svg aria-hidden="true"><use href="#product-smb"/></svg></div><div>Gama SMB<small>Giải pháp doanh nghiệp</small></div></div>
+    <div class="mq-item"><div class="mq-symbol"><svg aria-hidden="true"><use href="#product-edu"/></svg></div><div>Omega EDU<small>Kiến tạo tương lai số</small></div></div>
+    <div class="mq-item"><div class="mq-symbol"><svg aria-hidden="true"><use href="#product-crm"/></svg></div><div>Omega CRM<small>Kết nối khách hàng</small></div></div>
+    <div class="mq-item"><div class="mq-symbol"><svg aria-hidden="true"><use href="#product-support"/></svg></div><div>Dịch vụ hỗ trợ<small>Luôn bên bạn</small></div></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 <strong>OMEGA</strong> · 17 Years Anniversary · Kết nối · Kiến tạo · Phát triển</div>
+</footer>
+
+<script>
+/* ========== Reveal on scroll ========== */
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('visible'));return;}
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+    });
+  },{threshold:.15,rootMargin:'0px 0px -80px 0px'});
+  els.forEach(e=>io.observe(e));
+})();
+
+/* ========== Topbar scroll state ========== */
+(function(){
+  const bar=document.getElementById('topbar');
+  const onScroll=()=>bar.classList.toggle('scrolled',window.scrollY>40);
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+
+/* ========== Countdown ========== */
+(function(){
+  const target=new Date('2026-10-17T18:00:00+07:00').getTime();
+  const els={
+    d:document.getElementById('cd-d'),
+    h:document.getElementById('cd-h'),
+    m:document.getElementById('cd-m'),
+    s:document.getElementById('cd-s'),
+  };
+  if(!els.d) return;
+  const pad=n=>String(n).padStart(2,'0');
+  function tick(){
+    const diff=target-Date.now();
+    if(diff<=0){
+      els.d.textContent='00';els.h.textContent='00';
+      els.m.textContent='00';els.s.textContent='00';
+      return;
+    }
+    els.d.textContent=pad(Math.floor(diff/86400000));
+    els.h.textContent=pad(Math.floor(diff%86400000/3600000));
+    els.m.textContent=pad(Math.floor(diff%3600000/60000));
+    els.s.textContent=pad(Math.floor(diff%60000/1000));
+  }
+  tick();setInterval(tick,1000);
+})();
+
+/* ========== Stats counter (giữ lại dấu +) ========== */
+(function(){
+  const nums=document.querySelectorAll('[data-count]');
+  if(!nums.length) return;
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el=e.target;
+      const end=parseInt(el.dataset.count,10);
+      const dur=1400;
+      const t0=performance.now();
+      (function step(now){
+        const p=Math.min((now-t0)/dur,1);
+        const eased=1-Math.pow(1-p,3);
+        el.innerHTML=Math.round(end*eased).toLocaleString('vi-VN')+'<sup>+</sup>';
+        if(p<1) requestAnimationFrame(step);
+      })(t0);
+      io.unobserve(el);
+    });
+  },{threshold:.6});
+  nums.forEach(n=>io.observe(n));
+})();
+
+/* ========== Smooth anchor with offset ========== */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(id.length<2) return;
+    const el=document.querySelector(id);
+    if(!el) return;
+    e.preventDefault();
+    const top=el.getBoundingClientRect().top+window.scrollY-80;
+    window.scrollTo({top,behavior:'smooth'});
+  });
+});
+
+/* ========== Scrollspy ========== */
+(function(){
+  const links=[...document.querySelectorAll('.nav-links a')];
+  const sections=links.map(l=>document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  if(!sections.length) return;
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));
+      }
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  sections.forEach(s=>io.observe(s));
+})();
+</script>
+</body>
+</html>
